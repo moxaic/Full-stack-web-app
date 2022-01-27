@@ -1,0 +1,16 @@
+mixin alt_auth(route)
+  include ../components/seperator
+
+  .alt-auth
+    if route === "register"
+      strong Create an account with
+
+    include ../components/auth_providers
+
+    -
+      const paraText = route === "register" ? "Already" : "Don't";
+      const linkHref = route === "register" ? "/login" : "/register";
+      const linkText = route === "register" ? "Sign In" : "Sign Up";
+
+    p.change-page= `${paraText} have an account?`
+      a(href=linkHref)= linkText

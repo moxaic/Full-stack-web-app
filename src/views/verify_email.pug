@@ -1,0 +1,20 @@
+extends ./layouts/layout
+
+block content
+  .form-ctn
+    h1 Verify your email
+    p Enter the OTP sent on your registered mail
+
+    -
+      const formAttr = { action: "/register/verify_email", method: "post", purpose: "Verify Email" };
+      const fields = [
+        { _: { autofocus: true, max: 9, min: 0, name: "0", type: "number" }},
+        { _: { max: 9, min: 0, name: "1", type: "number" }},
+        { _: { max: 9, min: 0, name: "2", type: "number" }},
+        { _: { max: 9, min: 0, name: "3", type: "number" }},
+        { _: { max: 9, min: 0, name: "4", type: "number" }},
+        { _: { max: 9, min: 0, name: "5", type: "number" }},
+      ];
+
+    include ./mixins/form
+    +form(formAttr, fields)(class="verify-email-form" id="otp-form")

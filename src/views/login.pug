@@ -1,0 +1,23 @@
+extends ./layouts/layout
+
+block content
+  .login-page
+    .form-ctn
+
+      include components/logo
+      -
+        const formAttr = {
+          action: "/login",
+          method: "post",
+          purpose: "Sign In"
+        };
+        const fields = [
+          { "Username / Email": { name: "username", type: "text" }},
+          { Password: { name: "password", type: "password" }},
+        ];
+
+      include ./mixins/form
+      +form(formAttr, fields)
+
+      include ./mixins/alt_auth
+      +alt_auth("login")

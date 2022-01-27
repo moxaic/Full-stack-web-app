@@ -1,0 +1,11 @@
+-
+  const providers = [
+    { name: "Google", link: "" },
+    { name: "Facebook", link: "" },
+    { name: "LinkedIn", link: "" },
+  ];
+
+ul.auth-providers
+  each provider in providers
+    li
+      a.provider(data-provider=provider.name href=provider.link)= provider.name

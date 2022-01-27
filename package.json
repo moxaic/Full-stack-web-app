@@ -1,0 +1,27 @@
+{
+  "name": "eagre",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node dist/index.js",
+    "dev": "concurrently -n \"NODEMON,TSC,BROWSER-SYNC\" -k true -c \"green.bold,magenta.bold,blue.bold\" \"nodemon index.ts\" \"npm:watch:ts\" \"npm:watch:client\"",
+    "build": "tsc -p . && cp -r public/assets public/styles dist/public && cp -r src/views dist/src",
+    "watch:client": "browser-sync start --config bs-config.js",
+    "watch:ts": "cd public/scripts && tsc -w",
+    "clean:client": "cd public/scripts && del *.js"
+  },
+  "dependencies": {
+    "express": "^4.17.2",
+    "pug": "^3.0.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/node": "^17.0.9",
+    "browser-sync": "^2.27.7",
+    "concurrently": "^7.0.0",
+    "nodemon": "^2.0.15",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.4"
+  }
+}

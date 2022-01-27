@@ -1,0 +1,26 @@
+extends ./layouts/layout
+
+block content
+  .page
+    .form-ctn
+
+      include ./components/logo
+      -
+        const formAttr = {
+          action: "/register",
+          method: "post",
+          purpose: "Sign Up"
+        };
+        const fields = [
+          { "First Name": { name: "fname", type: "text" }},
+          { "Last name": { name: "lname", type: "text" }},
+          { Email: { name: "email", type: "email" }},
+          { Password: { name: "password", type: "password" }},
+          { "Confirm Password": { name: "password", type: "password" }}
+        ];
+
+      include ./mixins/form
+      +form(formAttr, fields)
+
+      include ./mixins/alt_auth
+      +alt_auth("register")
